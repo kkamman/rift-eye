@@ -35,7 +35,7 @@ app.whenReady().then(() => {
         ...details.responseHeaders,
         "Content-Security-Policy": `
           default-src 'none';
-          script-src 'self';
+          script-src 'self' 'unsafe-inline';
           style-src 'self' 'unsafe-inline';
           img-src 'self' data:;
           connect-src 'self';
