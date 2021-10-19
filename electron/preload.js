@@ -1,3 +1,3 @@
 const { contextBridge } = require("electron");
 
-contextBridge.exposeInMainWorld("electronAPI", {});
+contextBridge.exposeInMainWorld("electronApi", {});
