@@ -36,23 +36,23 @@ export class LiveClientDataService {
   }
 
   getPlayerSummonerSpells(summonerName: string): Observable<unknown> {
-    return this.request('activeplayername', summonerName);
+    return this.request('playersummonerspells', summonerName);
   }
 
   getPlayerMainRunes(summonerName: string): Observable<unknown> {
-    return this.request('activeplayername', summonerName);
+    return this.request('playermainrunes', summonerName);
   }
 
   getPlayerItems(summonerName: string): Observable<unknown> {
-    return this.request('activeplayername', summonerName);
+    return this.request('playeritems', summonerName);
   }
 
   getEventData(): Observable<unknown> {
-    return this.request('activeplayername');
+    return this.request('eventdata');
   }
 
   getGameStats(): Observable<unknown> {
-    return this.request('activeplayername');
+    return this.request('gamestats');
   }
 
   private request<T>(endpoint: string, summonerName?: string): Observable<T> {
