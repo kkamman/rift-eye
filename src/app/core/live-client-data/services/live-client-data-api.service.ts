@@ -1,17 +1,22 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ActivePlayer } from './models/active-player.model';
+import { EventData } from '../models/event-data.model';
+import { GameStats } from '../models/game-stats.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LiveClientDataService {
+export class LiveClientDataApiService {
   private readonly liveClientDataUrl = 'https://127.0.0.1:2999/liveclientdata';
 
   constructor(private readonly http: HttpClient) {}
 
-  getActivePlayer(): Observable<ActivePlayer> {
+  getAllGameData(): Observable<unknown> {
+    return this.request('allgamedata');
+  }
+
+  getActivePlayer(): Observable<unknown> {
     return this.request('activeplayer');
   }
 
@@ -47,11 +52,11 @@ export class LiveClientDataService {
     return this.request('playeritems', summonerName);
   }
 
-  getEventData(): Observable<unknown> {
+  getEventData(): Observable<EventData> {
     return this.request('eventdata');
   }
 
-  getGameStats(): Observable<unknown> {
+  getGameStats(): Observable<GameStats> {
     return this.request('gamestats');
   }
 
