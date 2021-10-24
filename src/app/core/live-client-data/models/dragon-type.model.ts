@@ -4,6 +4,4 @@ export enum DragonType {
   Fire = 'Fire',
   Water = 'Water',
   Elder = 'Elder',
-  Hextech = 'Hextech',
-  Chemtech = 'Chemtech',
 }

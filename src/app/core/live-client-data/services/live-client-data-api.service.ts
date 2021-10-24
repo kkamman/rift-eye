@@ -8,7 +8,7 @@ import { GameStats } from '../models/game-stats.model';
   providedIn: 'root',
 })
 export class LiveClientDataApiService {
-  private readonly liveClientDataUrl = 'https://127.0.0.1:2999/liveclientdata';
+  private readonly baseUrl = 'https://127.0.0.1:2999/liveclientdata';
 
   constructor(private readonly http: HttpClient) {}
 
@@ -61,7 +61,7 @@ export class LiveClientDataApiService {
   }
 
   private request<T>(endpoint: string, summonerName?: string): Observable<T> {
-    const url = `${this.liveClientDataUrl}/${endpoint}`;
+    const url = `${this.baseUrl}/${endpoint}`;
     const options = summonerName
       ? { params: new HttpParams().set('summonerName', summonerName) }
       : {};

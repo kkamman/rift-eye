@@ -1,21 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { LiveClientDataApiService } from './core/live-client-data/services/live-client-data-api.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'rift-eye';
-
-  constructor(
-    private readonly liveClientDataApiService: LiveClientDataApiService
-  ) {}
-
-  ngOnInit(): void {
-    setInterval(() => {
-      this.liveClientDataApiService.getAllGameData().subscribe(console.log);
-    }, 10000);
-  }
 }
