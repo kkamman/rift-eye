@@ -1,15 +1,15 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { DebugLiveClientEventsService } from './debug-live-client-events.service';
+import { MockLiveClientEventsService } from './mock-live-client-events.service';
 
-describe('DebugLiveClientEventsService', () => {
-  let service: DebugLiveClientEventsService;
+describe('MockLiveClientEventsService', () => {
+  let service: MockLiveClientEventsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-    service = TestBed.inject(DebugLiveClientEventsService);
+    service = TestBed.inject(MockLiveClientEventsService);
   });
 
   it('should be created', () => {
