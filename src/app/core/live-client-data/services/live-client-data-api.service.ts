@@ -8,6 +8,7 @@ import { GameData } from '../models/game-data.model';
 import { GameStats } from '../models/game-stats.model';
 import { PlayerItems } from '../models/items.model';
 import { PlayerScores } from '../models/player-score.model';
+import { Player } from '../models/player.model';
 import { ActivePlayerRunes, PlayerMainRunes } from '../models/runes.model';
 import { PlayerSummonerSpells } from '../models/summoner-spells.model';
 
@@ -39,7 +40,7 @@ export class LiveClientDataApiService {
     return this.request('activeplayerrunes');
   }
 
-  getPlayerList(): Observable<unknown> {
+  getPlayerList(): Observable<Player[]> {
     return this.request('playerlist');
   }
 
