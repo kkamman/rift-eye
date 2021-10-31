@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EventData } from '../models/event-data.model';
 import { GameStats } from '../models/game-stats.model';
+import { PlayerItems } from '../models/items.model';
+import { PlayerScore } from '../models/player-score.model';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +38,7 @@ export class LiveClientDataApiService {
     return this.request('playerlist');
   }
 
-  getPlayerScores(summonerName: string): Observable<unknown> {
+  getPlayerScores(summonerName: string): Observable<PlayerScore> {
     return this.request('playerscores', summonerName);
   }
 
@@ -48,7 +50,7 @@ export class LiveClientDataApiService {
     return this.request('playermainrunes', summonerName);
   }
 
-  getPlayerItems(summonerName: string): Observable<unknown> {
+  getPlayerItems(summonerName: string): Observable<PlayerItems> {
     return this.request('playeritems', summonerName);
   }
 
