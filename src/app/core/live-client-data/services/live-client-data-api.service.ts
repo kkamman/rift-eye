@@ -1,8 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Abilities } from '../models/abilities.model';
 import { EventData } from '../models/event-data.model';
 import { GameStats } from '../models/game-stats.model';
+import { ActivePlayerRunes, PlayerMainRunes } from '../models/runes.model';
+import { PlayerSummonerSpells } from '../models/summoner-spells.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,11 +27,11 @@ export class LiveClientDataApiService {
     return this.request('activeplayername');
   }
 
-  getActivePlayerAbilities(): Observable<unknown> {
+  getActivePlayerAbilities(): Observable<Abilities> {
     return this.request('activeplayerabilities');
   }
 
-  getActivePlayerRunes(): Observable<unknown> {
+  getActivePlayerRunes(): Observable<ActivePlayerRunes> {
     return this.request('activeplayerrunes');
   }
 
@@ -40,11 +43,13 @@ export class LiveClientDataApiService {
     return this.request('playerscores', summonerName);
   }
 
-  getPlayerSummonerSpells(summonerName: string): Observable<unknown> {
+  getPlayerSummonerSpells(
+    summonerName: string
+  ): Observable<PlayerSummonerSpells> {
     return this.request('playersummonerspells', summonerName);
   }
 
-  getPlayerMainRunes(summonerName: string): Observable<unknown> {
+  getPlayerMainRunes(summonerName: string): Observable<PlayerMainRunes> {
     return this.request('playermainrunes', summonerName);
   }
 
