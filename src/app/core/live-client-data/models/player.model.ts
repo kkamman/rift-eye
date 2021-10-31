@@ -1,5 +1,5 @@
 import { Item } from './items.model';
-import { PlayerScore } from './player-score.model';
+import { PlayerScores } from './player-score.model';
 import { PlayerMainRunes } from './runes.model';
 import { PlayerSummonerSpells } from './summoner-spells.model';
 import { Team } from './team.model';
@@ -16,7 +16,7 @@ export interface Player {
   rawChampionName: string;
   respawnTimer: number;
   runes: PlayerMainRunes;
-  scores: PlayerScore;
+  scores: PlayerScores;
   skinID: number;
   summonerName: string;
   summonerSpells: PlayerSummonerSpells;
