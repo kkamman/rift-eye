@@ -1,4 +1,4 @@
-export interface PlayerScore {
+export interface PlayerScores {
   assists: number;
   creepScore: number;
   deaths: number;

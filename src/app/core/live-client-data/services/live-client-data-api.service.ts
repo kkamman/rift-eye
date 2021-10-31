@@ -7,7 +7,7 @@ import { EventData } from '../models/event-data.model';
 import { GameData } from '../models/game-data.model';
 import { GameStats } from '../models/game-stats.model';
 import { PlayerItems } from '../models/items.model';
-import { PlayerScore } from '../models/player-score.model';
+import { PlayerScores } from '../models/player-score.model';
 import { ActivePlayerRunes, PlayerMainRunes } from '../models/runes.model';
 import { PlayerSummonerSpells } from '../models/summoner-spells.model';
 
@@ -43,7 +43,7 @@ export class LiveClientDataApiService {
     return this.request('playerlist');
   }
 
-  getPlayerScores(summonerName: string): Observable<PlayerScore> {
+  getPlayerScores(summonerName: string): Observable<PlayerScores> {
     return this.request('playerscores', summonerName);
   }
 
