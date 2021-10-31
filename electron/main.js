@@ -8,14 +8,15 @@ const externalOpenAllowedUrls = [];
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 800,
     webPreferences: {
       preload: path.join(app.getAppPath(), "electron", "preload.js"),
       sandbox: true,
     },
   });
   win.loadFile(path.join(app.getAppPath(), "dist", "rift-eye", "index.html"));
+  win.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {
@@ -38,10 +39,20 @@ app.whenReady().then(() => {
           script-src 'self' 'unsafe-inline';
           style-src 'self' 'unsafe-inline';
           img-src 'self' data:;
-          connect-src 'self';
+          connect-src 'self' https://127.0.0.1:2999;
           `,
       },
     });
+  });
+
+  session.defaultSession.setCertificateVerifyProc((request, callback) => {
+    const { hostname } = request;
+    if (hostname === "127.0.0.1") {
+      // TODO: Verify league certificate
+      callback(0);
+    } else {
+      callback(-3);
+    }
   });
 
   app.on("web-contents-created", (event, contents) => {
