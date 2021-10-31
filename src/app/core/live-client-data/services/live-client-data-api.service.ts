@@ -2,7 +2,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Abilities } from '../models/abilities.model';
+import { ActivePlayer } from '../models/active-player.model';
 import { EventData } from '../models/event-data.model';
+import { GameData } from '../models/game-data.model';
 import { GameStats } from '../models/game-stats.model';
 import { PlayerItems } from '../models/items.model';
 import { PlayerScore } from '../models/player-score.model';
@@ -17,11 +19,11 @@ export class LiveClientDataApiService {
 
   constructor(private readonly http: HttpClient) {}
 
-  getAllGameData(): Observable<unknown> {
+  getAllGameData(): Observable<GameData> {
     return this.request('allgamedata');
   }
 
-  getActivePlayer(): Observable<unknown> {
+  getActivePlayer(): Observable<ActivePlayer> {
     return this.request('activeplayer');
   }
 
