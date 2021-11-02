@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+.list {
+  @apply flex flex-col;
+
+  &__header {
+  }
+
+  &__item {
+  }
+
+  &__divider {
+  }
+
+  &__footer {
+  }
+}

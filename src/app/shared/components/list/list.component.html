@@ -1,0 +1,32 @@
+<div class="list">
+  <div class="list__header">
+    <ng-container
+      [ngTemplateOutlet]="
+        templateReferences['header']
+          ? templateReferences['header']
+          : defaultHeaderTemplate
+      "
+    ></ng-container>
+    <ng-template #defaultHeaderTemplate>{{ title }}</ng-template>
+  </div>
+  <ng-container *ngFor="let data of listItemData; index as i">
+    <div class="list__item">
+      <ng-container
+        *ngTemplateOutlet="
+          templateReferences['item'];
+          context: { $implicit: data, index: i }
+        "
+      ></ng-container>
+    </div>
+    <div class="list__divider" *ngIf="i < listItemData.length - 1">
+      <ng-container
+        [ngTemplateOutlet]="templateReferences['divider']"
+      ></ng-container>
+    </div>
+  </ng-container>
+  <div class="list__footer">
+    <ng-container
+      [ngTemplateOutlet]="templateReferences['footer']"
+    ></ng-container>
+  </div>
+</div>
