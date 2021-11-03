@@ -1,6 +1,10 @@
 const { app, BrowserWindow, session, shell } = require("electron");
 const path = require("path");
+const fs = require("fs");
 const URL = require("url").URL;
+
+const args = process.argv.slice(1);
+const serving = args.some((arg) => arg === "--serve");
 
 const navigationAllowedUrls = [];
 const webviewAllowedUrls = [];
@@ -15,8 +19,21 @@ function createWindow() {
       sandbox: true,
     },
   });
-  win.loadFile(path.join(app.getAppPath(), "dist", "rift-eye", "index.html"));
-  win.webContents.openDevTools();
+
+  if (serving) {
+    win.webContents.openDevTools();
+    require("electron-reload")(__dirname, {
+      electron: require(path.join(__dirname, "/../node_modules/electron")),
+    });
+    win.loadURL("http://localhost:4200");
+  } else {
+    let pathIndex = "./index.html";
+    if (fs.existsSync(path.join(__dirname, "../dist/rift-eye/index.html"))) {
+      pathIndex = "../dist/rift-eye/index.html";
+    }
+
+    win.loadFile(path.join(__dirname, pathIndex));
+  }
 }
 
 app.whenReady().then(() => {
