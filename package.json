@@ -4,10 +4,14 @@
   "main": "electron/main.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng build --base-href ./ && electron .",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "start": "npm-run-all --parallel electron:serve ng:serve",
+    "build": "ng build --base-href ./",
+    "build:dev": "npm run build -- --configuration development",
+    "build:prod": "npm run build -- --configuration production",
+    "electron:serve": "wait-on tcp:4200 && electron . --serve",
+    "electron:local": "npm run build:prod && electron .",
+    "ng:serve": "ng serve --configuration development",
+    "test": "ng test --watch=false",
     "lint": "ng lint"
   },
   "private": true,
@@ -43,6 +47,7 @@
     "@typescript-eslint/eslint-plugin": "4.28.2",
     "@typescript-eslint/parser": "4.28.2",
     "electron": "^15.2.0",
+    "electron-reload": "^1.5.0",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "jasmine-core": "~3.8.0",
@@ -51,11 +56,13 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "2.4.1",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^22.0.0",
     "tailwindcss": "latest",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "wait-on": "^6.0.0"
   }
 }
