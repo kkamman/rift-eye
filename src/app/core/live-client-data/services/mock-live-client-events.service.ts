@@ -6,7 +6,7 @@ import { LiveClientEventsService } from './live-client-events.service';
 @Injectable({
   providedIn: 'root',
 })
-export class DebugLiveClientEventsService extends LiveClientEventsService {
+export class MockLiveClientEventsService extends LiveClientEventsService {
   private debugEvents: LiveClientEvent[] = [];
 
   addDebugEvent(event: LiveClientEvent): void {
